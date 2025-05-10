@@ -92,7 +92,7 @@ mvn test
 ## 🔀 Branches
 
 This project was developed using structured branches:
-- `validation-and-tests` – input validation + testing
+- `input-validation` – input validation + testing
 - `refactor-async-processing` – async logic refactor + testing
 - 🔄 **Final result is merged into `master`**  
   The other branches are left intentionally to reflect clean git history and structure.
