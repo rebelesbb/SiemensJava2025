@@ -1,4 +1,4 @@
-# Siemens Java Internship – Refactored CRUD Application
+# Siemens Java Internship – Code Refactoring Application
 
 This is a fully refactored version of a Spring Boot CRUD application originally provided for the Siemens Java Internship assignment.  
 It improves code quality, adds full validation, restructures async processing, and introduces complete test coverage.
