@@ -1,5 +1,6 @@
 package com.siemens.internship;
 
+import com.siemens.internship.model.Item;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -12,6 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Unit tests for validating constraints on the Item entity.
+ * Tests field-level validation for name, description, status, and email
+ * using Jakarta Bean Validation
+ */
 public class ItemValidationTests {
 
     private Validator itemsValidator;

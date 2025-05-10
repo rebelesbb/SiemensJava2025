@@ -1,5 +1,8 @@
 package com.siemens.internship;
 
+import com.siemens.internship.model.Item;
+import com.siemens.internship.repository.ItemRepository;
+import com.siemens.internship.service.ItemService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,8 +16,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Unit tests for the asynchronous processing logic in ItemService.
+ * Covers normal execution and failure scenarios (save and find errors).
+ */
 @SpringBootTest
-public class ProcessItemsAsyncTest {
+public class ProcessItemsAsyncTests {
 
     @Autowired
     @SpyBean
@@ -46,6 +53,7 @@ public class ProcessItemsAsyncTest {
 
     @Test
     public void testProcessItemsAsyncFailUpdate(){
+        // simulates a failure during item update (save throws RuntimeException)
         Item itemToFail = itemRepository.save(new Item(null, "item4", "description4", "PENDING", "email4@example.com"));
 
         Mockito.doThrow(new RuntimeException())
@@ -65,6 +73,7 @@ public class ProcessItemsAsyncTest {
 
     @Test
     public void testProcessItemsAsyncFailFindItem(){
+        // simulates an item not found during processing (findById returns Optional.empty)
         Item itemNotFound = itemRepository.save(new Item(null, "item4", "description4", "PENDING", "email4@example.com"));
 
         Mockito.doReturn(Optional.empty())

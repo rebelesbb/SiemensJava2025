@@ -1,5 +1,8 @@
 package com.siemens.internship;
 
+import com.siemens.internship.model.Item;
+import com.siemens.internship.repository.ItemRepository;
+import com.siemens.internship.service.ItemService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,8 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Unit tests for basic CRUD operations in ItemService.
+ */
 @SpringBootTest
-public class ItemServiceCrudTest {
+public class ItemServiceCrudTests {
 
     @Autowired
     private ItemRepository itemRepository;
