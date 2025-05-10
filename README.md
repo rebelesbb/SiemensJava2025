@@ -1,39 +1,114 @@
-## Hi there 👋
+# Siemens Java Internship – Refactored CRUD Application
 
+This is a fully refactored version of a Spring Boot CRUD application originally provided for the Siemens Java Internship assignment.  
+It improves code quality, adds full validation, restructures async processing, and introduces complete test coverage.
 
-## Siemens Java Internship - Code Refactoring Project
+---
 
-This repository contains a Spring Boot application that implements a simple CRUD system with some asynchronous processing capabilities. The application was created by a development team in a hurry and while it implements all required features, the code quality needs significant improvement.
+## ✅ Assignment Goals Achieved
 
-## Getting Started
-- Clone this repository
-- Import the project into your IDE as a Maven project (Java 17, might work with other Java versions as well)
-- Study the existing code and identify issues
-- Implement your refactoring changes
-- Test thoroughly to ensure functionality is preserved
+- ✅ Fixed logical and structural issues while maintaining original functionality
+- ✅ Added input validation with Jakarta Bean Validation and regex-based email checks
+- ✅ Refactored the async processing method to be thread-safe and deterministic
+- ✅ Cleaned and unified REST controller logic with proper HTTP responses
+- ✅ Wrote unit and integration tests with near-complete coverage
+- ✅ Documented all major classes and methods
 
-## Your Assignment
-  The Project should have the following structure:
+---
 
-![image](https://github.com/user-attachments/assets/ab45f225-ff1f-4ff7-bbaa-3d5d0c21e7b1)
+## 📦 Technologies Used
 
-ⓘ
-##  You will have to:
-1. Fix all logical errors while maintaining the same functionality
-2. Implement proper error handling and validation
-3. Be well-documented with clear, concise comments
-4. Write test functions with as much coverage as possible
-5. Make sure that the Status Codes used in Controller are correct
-6. Find a way to implement an email validation
-7. Refactor the **processItemsAsync** function
-    The **processItemsAsync** function is supposed to:
-      1. Asynchronously process EVERY item (retrieve from database, update status, and save)
-      2. Track which items were processed
-      3. Return a list when all items have been processed
-      4. Provide an accurate list of all successfully processed items
-      HINT: You are free to modify the function and variables as much as you want :)
+- Java 17
+- Spring Boot 3.x
+- Spring Web, Spring Data JPA
+- Jakarta Validation (JSR-380)
+- H2 In-Memory Database
+- Lombok
+- JUnit 5, Mockito
+- MockMvc (Spring Test)
+- Maven
 
+---
 
-Copy the project and make the solution public on your personal GitHub.
-Provide us the GitHub URL via email.
-(Don't forget to make the repository PUBLIC 😁)
+## 🗂️ Project Structure
+
+```
+src/
+├── main/
+│   ├── java/com/siemens/internship/
+│   │   ├── model/        # JPA Entity
+│   │   ├── repository/   # JpaRepository interface
+│   │   ├── service/      # Business logic + async processing
+│   │   └── controller/   # REST API endpoints
+│   └── resources/
+│       └── application.properties
+└── test/
+    └── java/com/siemens/internship/
+        └── ... (unit + integration tests)
+```
+
+---
+
+## 🧪 How to Run Tests
+
+**Option 1 – IntelliJ:**
+> Right-click `src/test/java` → Run 'All Tests with Coverage'
+
+**Option 2 – Terminal:**
+```bash
+mvn test
+```
+
+---
+
+## 🧼 Refactoring Summary
+
+### 🧩 Controller Refactor
+- Unified return types using `ResponseEntity`
+- Added validation with `@Valid` and `BindingResult`
+- Used correct HTTP status codes: `200`, `201`, `204`, `400`, `404`, `500`
+- Improved naming, structure and clarity
+- Wrote MockMvc tests for all endpoints (valid/invalid cases)
+
+### 🔍 Validation Added
+- Used `@NotBlank`, `@Size`, `@Pattern` for entity fields
+- Custom regex for email validation
+- Fully tested all edge cases and invalid input
+
+### ⚙️ Async Processing
+- Refactored `processItemsAsync()` using `CompletableFuture.allOf(...)`
+- Ensured all items are processed and results collected
+- Made method fully thread-safe (no shared mutable state)
+- Covered success and failure cases via `@SpyBean` and Mockito
+
+### 🧪 Testing
+- Unit tests for validation and service logic
+- Integration tests for all controller endpoints
+- Edge case tests: invalid data, failed processing, not found items
+- Near-full coverage
+
+---
+
+## 🔀 Branches
+
+This project was developed using structured branches:
+- `validation-and-tests` – input validation + testing
+- `refactor-async-processing` – async logic refactor + testing
+- 🔄 **Final result is merged into `master`**  
+  The other branches are left intentionally to reflect clean git history and structure.
+
+---
+
+## 📬 Submission Notes
+
+- The project is public at:  
+  👉 [https://github.com/rebelesbb/SiemensJava2025](https://github.com/rebelesbb/SiemensJava2025)
+- Please refer to the `master` branch for the final solution
+- Tests can be reviewed in the `test` package and coverage verified in IntelliJ or via Maven
+
+---
+
+## 👤 Author
+
+**Bogdan Călin Florin Rebeleș**  
+GitHub: [https://github.com/rebelesbb](https://github.com/rebelesbb)
